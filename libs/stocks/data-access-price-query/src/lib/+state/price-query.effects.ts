@@ -29,7 +29,14 @@ export class PriceQueryEffects {
             }?token=${this.env.apiKey}`
           )
           .pipe(
-            map(resp => new PriceQueryFetched(resp as PriceQueryResponse[]))
+            map(
+              (resp: any[]) =>
+                new PriceQueryFetched(resp.filter(
+                  stockData =>
+                    new Date(stockData.date) >= new Date(action.fromDate) &&
+                    new Date(stockData.date) <= new Date(action.toDate)
+                ) as PriceQueryResponse[])
+            )
           );
       },
 
