@@ -4,7 +4,9 @@ import {
   MatFormFieldModule,
   MatInputModule,
   MatSelectModule,
-  MatButtonModule
+  MatButtonModule,
+  MatNativeDateModule,
+  MatDatepickerModule
 } from '@angular/material';
 import { RouterModule } from '@angular/router';
 import { SharedUiChartModule } from '@coding-challenge/shared/ui/chart';
@@ -18,6 +20,8 @@ import { ReactiveFormsModule } from '@angular/forms';
       { path: '', pathMatch: 'full', component: StocksComponent }
     ]),
     ReactiveFormsModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
