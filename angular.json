@@ -320,6 +320,36 @@
           }
         }
       }
+    },
+    "stocks-util": {
+      "root": "libs/stocks/util",
+      "sourceRoot": "libs/stocks/util/src",
+      "projectType": "library",
+      "prefix": "coding-challenge",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/stocks/util/tsconfig.lib.json",
+              "libs/stocks/util/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/stocks/util/jest.config.js",
+            "tsConfig": "libs/stocks/util/tsconfig.spec.json"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/schematics:component": {
+          "styleext": "scss"
+        }
+      }
     }
   },
   "cli": {

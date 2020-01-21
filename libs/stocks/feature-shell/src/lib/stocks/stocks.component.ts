@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PriceQueryFacade } from '@coding-challenge/stocks/data-access-price-query';
+import { STOCKCONSTANTS } from '../../../../util/src/lib/stocks.constants';
 
 @Component({
   selector: 'coding-challenge-stocks',
@@ -15,14 +16,35 @@ export class StocksComponent implements OnInit {
   quotes$ = this.priceQuery.priceQueries$;
 
   timePeriods = [
-    { viewValue: 'All available data', value: 'max' },
-    { viewValue: 'Five years', value: '5y' },
-    { viewValue: 'Two years', value: '2y' },
-    { viewValue: 'One year', value: '1y' },
-    { viewValue: 'Year-to-date', value: 'ytd' },
-    { viewValue: 'Six months', value: '6m' },
-    { viewValue: 'Three months', value: '3m' },
-    { viewValue: 'One month', value: '1m' }
+    { viewValue: STOCKCONSTANTS.ALL, value: STOCKCONSTANTS.ALL_VALUE },
+    {
+      viewValue: STOCKCONSTANTS.FIVE_YEAR,
+      value: STOCKCONSTANTS.FIVE_YEAR_VALUE
+    },
+    {
+      viewValue: STOCKCONSTANTS.TWO_YEAR,
+      value: STOCKCONSTANTS.TWO_YEAR_VALUE
+    },
+    {
+      viewValue: STOCKCONSTANTS.ONE_YEAR,
+      value: STOCKCONSTANTS.ONE_YEAR_VALUE
+    },
+    {
+      viewValue: STOCKCONSTANTS.YEAR_TO_DATE,
+      value: STOCKCONSTANTS.YEAR_TO_DATE_VALUE
+    },
+    {
+      viewValue: STOCKCONSTANTS.SIX_MONTH,
+      value: STOCKCONSTANTS.SIX_MONTH_VALUE
+    },
+    {
+      viewValue: STOCKCONSTANTS.THRESS_MONTH,
+      value: STOCKCONSTANTS.THRESS_MONTH_VALUE
+    },
+    {
+      viewValue: STOCKCONSTANTS.ONE_MONTH,
+      value: STOCKCONSTANTS.ONE_MONTH_VALUE
+    }
   ];
 
   constructor(private fb: FormBuilder, private priceQuery: PriceQueryFacade) {
