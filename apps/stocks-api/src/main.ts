@@ -3,6 +3,7 @@
  * This is only a minimal backend to get started.
  **/
 import { Server } from 'hapi';
+import { stocksPlugin } from './plugin/stocks.plugin';
 
 const init = async () => {
   const server = new Server({
@@ -10,22 +11,19 @@ const init = async () => {
     host: 'localhost'
   });
 
-  server.route({
-    method: 'GET',
-    path: '/',
-    handler: (request, h) => {
-      return {
-        hello: 'world'
-      };
-    }
+  server.cache.provision({
+    provider: {
+      constructor: require('@hapi/catbox-memory')
+    },
+    name: 'stock-details-cache'
   });
 
+  await server.register(stocksPlugin);
   await server.start();
   console.log('Server running on %s', server.info.uri);
 };
 
 process.on('unhandledRejection', err => {
-  console.log(err);
   process.exit(1);
 });
 
