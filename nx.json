@@ -36,6 +36,12 @@
       "tags": [
         "platform:server"
       ]
+    },
+    "stocks-util": {
+      "tags": [
+        "scope:stocks",
+        "type:util"
+      ]
     }
   }
 }
